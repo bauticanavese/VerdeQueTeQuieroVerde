@@ -1,1 +1,2 @@
-web: gunicorn verdequetequieroverde.wsgi --log-file -
+release: python manage.py migrate
+web: gunicorn webapp.wsgi
