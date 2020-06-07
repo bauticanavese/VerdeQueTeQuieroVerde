@@ -2,11 +2,19 @@ language: python
 python:
   - "3.6.9"
 
+services:
+  - mysql
+
 install:
   - pip install -r requirements.txt
 
 env:
   - ENVIRONMENT=local
+  - DJANGO=3.0.7
+  - DB=mysql
+
+before_script:
+  - mysql -e 'create database test;' -u root
 
 script:
   - python manage.py test
