@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn webapp.wsgi
+web: gunicorn verdequetequieroverde.wsgi
