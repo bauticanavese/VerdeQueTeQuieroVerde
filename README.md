@@ -1,19 +1,19 @@
 # VerdeQueTeQuieroVerde
 
-##Documentacion Django: [Django](https://docs.djangoproject.com/es/3.0/intro/tutorial01/)
+## Documentacion Django: [Django](https://docs.djangoproject.com/es/3.0/intro/tutorial01/)
 
-##Dependencias del proyecto:
+## Dependencias del proyecto:
 
 - *python3*
 - *pip3*
 - *python3-dev*
 - *libpq-dev*
 - *venv* (Virtual environment recomendado)
-##Instalar dependencias de Python con:
+## Instalar dependencias de Python con:
 
 `pip3 install -r requirements.txt`
 
-##Metodologia de desarrollo:
+## Metodologia de desarrollo:
 
 - Feature branch desde Master
 - Test Driven Development (TDD)
