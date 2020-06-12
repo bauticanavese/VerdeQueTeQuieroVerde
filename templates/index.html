@@ -1,6 +1,15 @@
 {% extends "base.html" %}
-
+{% load static%}
 {% block content %}
-<h1>HOME</h1>
+<div class="card" style="width: 25rem;">
+  <img src="{% static 'home/voluntariado.jpg' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">
+      Si deseas trabajar para difundir y mejorar la calidad de vida y salud ambiental.
+      Registrate y te contactaremos.
+    </p>
+    <a href="#" class="card-link">Registro</a>
+  </div>
+</div>
 
 {% endblock %}
