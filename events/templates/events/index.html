@@ -1,7 +1,23 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>Eventos</h1>
-{{saludo}}
+
+<div class="events-list">
+  {% if events_list %}
+      <ul>
+      {% for event in events_list %}
+        <div class="card">
+        <h2>{{ event.title }}</h2>
+        <h5>Evento sobre el tema: {{ event.topic}} a realizarse el dia
+        {{ event.event_date }} en {{ event.place }} con un cupo de asistentes
+        de {{ event.capacity }}</h5>
+        <p><button>Anotarse</button></p>
+        </div>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No hay eventos disponibles.</p>
+  {% endif %}
+</div>
 
 {% endblock %}
