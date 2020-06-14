@@ -9,3 +9,6 @@ class Event(models.Model):
     topic = models.CharField(max_length = 200, default = 'event topic')
     capacity = models.IntegerField(default = 0)
     place = models.CharField(max_length = 100, default = 'event place')
+
+    def __str__(self):
+        return self.title
