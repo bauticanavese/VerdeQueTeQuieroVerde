@@ -17,6 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from . import views
 
+admin.site.site_header = 'Verde Que Te Quiero Verde - Voluntarios'
+admin.site.site_title = 'Voluntarios'
+admin.site.index_title = 'Verde Que Te Quiero Verde administration'
+admin.empty_value_display = '**Empty**'
+
 urlpatterns = [
     path("", views.home, name="home"),
     path('events/', include('events.urls')),

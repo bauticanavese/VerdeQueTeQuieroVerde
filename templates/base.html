@@ -17,6 +17,9 @@
   {% load static%}
   <link rel="stylesheet" href="{% static 'css/master.css' %}">
 
+    <!--Font Awesome-->
+  <script src="https://kit.fontawesome.com/0598078ed9.js" crossorigin="anonymous"></script>
+
   <title>Verde que te quiero verde</title>
 </head>
 
@@ -36,11 +39,7 @@
     {% block navbar %}
     <!-- insert default navigation text for every page -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">logo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
+      <i class="fas fa-seedling fa-lg" style="color: green;"></i>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -51,23 +50,17 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Juegos
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Trivias</a>
+              <a class="dropdown-item" href="#">Puntaje</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Premios</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Charlas" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        <a class="btn btn-outline-success" href="/admin">Login Voluntarios</a>
       </div>
     </nav>
     {% endblock %}
