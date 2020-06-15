@@ -4,7 +4,6 @@
 
 <div class="events-list">
   {% if events_list %}
-      <ul>
       {% for event in events_list %}
         <div class="card">
         <h2>{{ event.title }}</h2>
@@ -14,7 +13,9 @@
         <p><button>Anotarse</button></p>
         </div>
       {% endfor %}
-      </ul>
+      {% if has_more %}
+        <p style="text-align:center;"><a href="?page=2">Ver mas</a></p>
+      {% endif %}
   {% else %}
       <p>No hay eventos disponibles.</p>
   {% endif %}
