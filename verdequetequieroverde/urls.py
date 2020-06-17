@@ -26,4 +26,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path('events/', include('events.urls')),
     path('admin/', admin.site.urls),
+    path('prizes/', include('prizes.urls')),
 ]
