@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'prizes.apps.PrizesConfig',
     'events.apps.EventsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
