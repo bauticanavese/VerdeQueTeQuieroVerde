@@ -1,15 +1,14 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .models import Event
 
 def index(request):
-    post_per_page = 5
     try:
         page_number = int(request.GET.get('page'))
-        index = page_number*post_per_page - 1
     except:
-        index = 0
-    events = Event.objects.all()[index:index+post_per_page]
-    visited = index * post_per_page + post_per_page
-    has_more = True if(Event.objects.all().count() > visited) else False
-    context = { 'events_list' : events , 'has_more' : has_more }
+        page_number = 1
+    events_list = Event.objects.all()
+    paginator = Paginator(events_list, 1)
+    page_obj = paginator.get_page(page_number)
+    context = { 'page_obj' : page_obj }
     return render(request, 'events/index.html', context=context)
