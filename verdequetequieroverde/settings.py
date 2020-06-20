@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'trivias.apps.TriviasConfig',
     'materials.apps.MaterialsConfig',
     'prizes.apps.PrizesConfig',
     'events.apps.EventsConfig',
