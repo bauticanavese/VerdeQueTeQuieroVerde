@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+
+<div class="container">
+
+<div class="col-12">
+  <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px; background:#F3FFFC;">
+    <div>
+      <h3 class="text-warning" style="text-align:center">{{ material.title }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <div class="row pr-3">
+          <div class="col-8">
+            <label class="text-primary" style="font-size:21px;">{{material.description}}</label>
+          </div>
+        </div>
+        <div class="row col-12 text-justify d-none d-md-block">
+          <p>{{material.content}}</p>
+        </div>
+         <div style="color:maroon">
+          <p> Para más información: <a href={{material.attached_document}} style="color:maroon" target="_blank"> <i class="fas fa-external-link-alt"></i></a></p>
+        </div>
+      </div>
+    <div class="col-md-4 col-sm-12 text-left">
+      <img src="{% static 'materials/default-material.jpg' %}" width="100%" style="border-radius:5px; border:1px solid #bbb9b9; margin-top:50px;" />
+    </div>
+    </div>
+    <div class="col-md-4 col-sm-12 offset-9 text-left">
+      <div style="color:gray">
+        <p>{{material.creation_date}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-12 offset-9 text-right">
+    <a href="/materials" class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Volver</a>
+  </div>
+</div>
+
+{% endblock %}
