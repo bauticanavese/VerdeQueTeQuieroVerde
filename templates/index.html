@@ -1,15 +1,35 @@
 {% extends "base.html" %}
 {% load static%}
 {% block content %}
-<div class="card" style="width: 25rem;">
-  <img src="{% static 'home/voluntariado.jpg' %}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">
-      Si deseas trabajar para difundir y mejorar la calidad de vida y salud ambiental.
-      Registrate y te contactaremos.
-    </p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7p31CQXoCwq_1eNIpbOEh9j1xp4DgLlqAWl9HcBM6BZJ2KQ/viewform" class="card-link" target="blank">Registro</a>
+<div class="row">
+  <div class="col-md-4 offset-2">
+    <div class="card" style="width: 20rem; border-color:#84fa82; border-width: 3px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7p31CQXoCwq_1eNIpbOEh9j1xp4DgLlqAWl9HcBM6BZJ2KQ/viewform" target="blank">
+        <img src="{% static 'home/voluntariado.jpg' %}" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body">
+        <p class="card-text">
+          Si deseas trabajar para difundir y mejorar la calidad de vida y salud ambiental.
+          Registrate y te contactaremos.
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7p31CQXoCwq_1eNIpbOEh9j1xp4DgLlqAWl9HcBM6BZJ2KQ/viewform" class="card-link" target="blank">Registro</a>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
 
+  <div class="col-md-4">
+    <div class="card" style="width: 20rem; border-color:#7fd7f0; border-width: 3px;">
+      <a href="/materials">
+        <img src="{% static 'home/material.jpg' %}" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title"><a href="/materials" class="card-link">Material educativo</a></h5>
+        <p class="card-text">
+          Consulta material sobre temas ambientales.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
 {% endblock %}
