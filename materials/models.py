@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+MAX_SIZE_CONTENT_LIST = 200
 
 class Material(models.Model):
     title = models.CharField(max_length=200)
@@ -13,6 +14,6 @@ class Material(models.Model):
         return self.title
     
     def resume(self):
-        if len(self.content) > 80:
-            self.content = f'{self.content[:80]}...'
+        if len(self.content) > MAX_SIZE_CONTENT_LIST:
+            self.content = f'{self.content[:MAX_SIZE_CONTENT_LIST]}...'
         self.creation_date = self.creation_date.date()
