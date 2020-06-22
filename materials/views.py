@@ -6,7 +6,7 @@ def transform_to_view(material):
     return material
 
 def index(request):
-    materials = map(transfor_to_view, Material.objects.all())
+    materials = map(transform_to_view, Material.objects.all())
     context = { 'materials' : materials }
     return render(request, 'materials/index.html', context=context)
 

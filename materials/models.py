@@ -11,3 +11,8 @@ class Material(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def resume(self):
+        if len(self.content) > 80:
+            self.content = f'{self.content[:80]}...'
+        self.creation_date = self.creation_date.date()
