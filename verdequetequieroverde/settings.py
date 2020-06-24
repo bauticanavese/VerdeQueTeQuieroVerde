@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'workgroups.apps.WorkgroupsConfig',
     'trivias.apps.TriviasConfig',
     'materials.apps.MaterialsConfig',
     'prizes.apps.PrizesConfig',

@@ -3,6 +3,7 @@ from django.utils import timezone
 
 MAX_SIZE_CONTENT_LIST = 200
 
+
 class Material(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=400, default='material description')
