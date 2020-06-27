@@ -25,7 +25,7 @@
           <p class="card-text">
           <h5>Se realizara el dia {{ event.event_date }} en {{ event.place }} con un
               cupo de asistentes de {{ event.capacity }}</p>
-          <a href="#" class="btn btn-success">Anotarse</a>
+          <a href="/events/register?id={{ event.id }}" class="btn btn-success">Anotarse</a>
         </div>
       </div>
       {% endfor %}
