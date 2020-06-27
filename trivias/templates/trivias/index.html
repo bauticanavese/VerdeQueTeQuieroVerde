@@ -6,37 +6,64 @@
   {% if not trivias %}
     <p>No hay trivia.</p>
   {% else %}
-    {% if error%}
-      <h1>{{error}}</h1>
-    {% endif %}
     <div class="container" style="background: beige">
-    <form action="/scores/score" method="post">
-      {% csrf_token %}
-      <label for="name">Tu nombre: </label>
-      <input id="name" type="text" name="name">
-
-      <label for="dni">DNI</label>
-      <input type="number" onkeypress="return event.charCode >= 48" min="1" name="dni">
-
-
-      {% for trivia in trivias %}
-        <h4 class="text-success">{{trivia.title}}</h4>
-        <p>
-          {% for choice in choices%}
-            {% if choice.trivia.id == trivia.id %}
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name={{trivia.id}} id={{ choice.id }} value="{{choice.id}}">
-                  <label class="form-check-label" for={{ choice.id }}>
-                    {{choice.text}}
-                  </label>
-                </div>
-              {% endif %}
-          {% endfor %}
-        </p>
+      <br>
+      <h3 style="color:Tomato; text-align:center;" >Trívia del día</h3>
+      {% if error%}
         <br>
-      {% endfor %}
-      <input type="submit" value="OK">
-    </form>
-  {% endif %}
+        <div class="alert alert-danger" role="alert">{{error}}</div>
+      {% endif %}
+      <form action="/scores/score" method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="form-group col-4">
+            <label for="name">Nombre: </label>
+            <input id="name" type="text" class="form-control" name="name">
+          </div>
+          
+          <div class="form-group col-4">
+            <label for="dni">DNI*</label>
+            <input type="number" class="form-control" onkeypress="return event.charCode >= 48" min="1" name="dni">
+          </div>
+        </div>
 
+        {% for trivia in trivias %}
+          <div class="card">
+            <div class="card-header">
+              <h6 class="text-primary">{{trivia.title}}</h6>
+            </div>
+            <div class="card-body">
+              {% for choice in choices%}
+                {% if choice.trivia.id == trivia.id %}
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name={{trivia.id}} id={{ choice.id }} value="{{choice.id}}">
+                    <label class="form-check-label" for={{ choice.id }}>
+                      {{choice.text}}
+                    </label>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          
+          {% comment %} <p>
+            {% for choice in choices%}
+              {% if choice.trivia.id == trivia.id %}
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name={{trivia.id}} id={{ choice.id }} value="{{choice.id}}">
+                    <label class="form-check-label" for={{ choice.id }}>
+                      {{choice.text}}
+                    </label>
+                  </div>
+                {% endif %}
+            {% endfor %}
+          </p> {% endcomment %}
+          <br>
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Enviar resupuestas">
+      </form>
+      <br>
+    </div>
+  {% endif %}
+  <br>
 {% endblock %}

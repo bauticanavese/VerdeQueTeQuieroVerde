@@ -15,7 +15,7 @@ def calculate_score(choices_ids):
 def create_score(participant, dni, total_score):
   past_scores = Score.objects.filter(dni=dni, play_date__gte=date.today())
   if len(past_scores) > 0:
-    raise Exception("Ya participó en la trivia")
+    raise Exception("Ya participó en la trívia, intente mañana.")
 
   score = Score(participant=participant, dni=dni, score=total_score)
   score.save()
@@ -27,7 +27,7 @@ def score(request):
       participant = request.POST.get('name', '')
       dni = request.POST.get('dni', '')
       if not dni:
-        raise Exception("Debe ingresar su dni")
+        raise Exception("Debe ingresar su dni para poder jugar.")
       dni = int(dni)
       selected_choices = { int(v) for (k,v) in request.POST.items() if k.isnumeric()}
       total_score = calculate_score(selected_choices)
