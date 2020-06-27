@@ -29,4 +29,5 @@ urlpatterns = [
     path('prizes/', include('prizes.urls')),
     path('materials/', include('materials.urls')),
     path('workgroups/', include('workgroups.urls')),
+    path('trivias/', include('trivias.urls')),
 ]

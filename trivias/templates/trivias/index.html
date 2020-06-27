@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  {% if not trivias %}
+    <p>No hay trivia.</p>
+  {% else %}
+    <div class="container" style="background: beige">
+    {% for trivia in trivias %}
+      <h3 class="text-success">{{ trivia.title }}</h3>
+      <br>
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}
