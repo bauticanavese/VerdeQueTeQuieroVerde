@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'materials.apps.MaterialsConfig',
     'prizes.apps.PrizesConfig',
     'events.apps.EventsConfig',
+    'scores.apps.ScoresConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

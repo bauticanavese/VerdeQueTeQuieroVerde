@@ -7,10 +7,33 @@
     <p>No hay trivia.</p>
   {% else %}
     <div class="container" style="background: beige">
-    {% for trivia in trivias %}
-      <h3 class="text-success">{{ trivia.title }}</h3>
-      <br>
-    {% endfor %}
+    <form action="/scores/score" method="post">
+      {% csrf_token %}
+      <label for="name">Tu nombre: </label>
+      <input id="name" type="text" name="name">
+
+      <label for="dni">DNI</label>
+      <input type="number" onkeypress="return event.charCode >= 48" min="1" name="dni">
+
+
+      {% for trivia in trivias %}
+        <h4 class="text-success">{{trivia.title}}</h4>
+        <p>
+          {% for choice in choices%}
+            {% if choice.trivia.id == trivia.id %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name={{trivia.id}} id={{ choice.id }} value="{{choice.id}}">
+                  <label class="form-check-label" for={{ choice.id }}>
+                    {{choice.text}}
+                  </label>
+                </div>
+              {% endif %}
+          {% endfor %}
+        </p>
+        <br>
+      {% endfor %}
+      <input type="submit" value="OK">
+    </form>
   {% endif %}
 
 {% endblock %}

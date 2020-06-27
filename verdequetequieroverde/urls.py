@@ -30,4 +30,5 @@ urlpatterns = [
     path('materials/', include('materials.urls')),
     path('workgroups/', include('workgroups.urls')),
     path('trivias/', include('trivias.urls')),
+    path('scores/', include('scores.urls')),
 ]
