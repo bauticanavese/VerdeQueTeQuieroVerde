@@ -6,6 +6,9 @@
   {% if not trivias %}
     <p>No hay trivia.</p>
   {% else %}
+    {% if error%}
+      <h1>{{error}}</h1>
+    {% endif %}
     <div class="container" style="background: beige">
     <form action="/scores/score" method="post">
       {% csrf_token %}
