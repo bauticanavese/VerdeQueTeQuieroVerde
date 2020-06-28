@@ -6,7 +6,7 @@ from datetime import date
 from .models import Score
 from trivias.models import Choice
 
-SCORE_PER_QUESTION = 5
+SCORE_PER_QUESTION = 13
 
 def calculate_score(choices_ids):
   choices = list(map(lambda x: Choice.objects.get(id=x), choices_ids))
@@ -35,8 +35,7 @@ def score(request):
     except Exception as e:
       query_string =  urlencode({'error_message': e.args[0]})
       url = '/trivias?{}'.format(query_string)
-      response = redirect(url)
-      return response
+      return redirect(url)
     
     context = {'participant': score.participant, 'dni': score.dni, 'score': score.score, 'date': score.play_date}
 
