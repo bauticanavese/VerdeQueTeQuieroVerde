@@ -45,19 +45,6 @@
               {% endfor %}
             </div>
           </div>
-          
-          {% comment %} <p>
-            {% for choice in choices%}
-              {% if choice.trivia.id == trivia.id %}
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name={{trivia.id}} id={{ choice.id }} value="{{choice.id}}">
-                    <label class="form-check-label" for={{ choice.id }}>
-                      {{choice.text}}
-                    </label>
-                  </div>
-                {% endif %}
-            {% endfor %}
-          </p> {% endcomment %}
           <br>
         {% endfor %}
         <input type="submit" class="btn btn-success" value="Enviar resupuestas">
