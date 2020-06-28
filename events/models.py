@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -11,3 +12,21 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+class EventInscription(models.Model):
+    person_name = models.CharField(max_length = 200)
+    person_email = models.EmailField(max_length = 100)
+    event = models.ForeignKey(Event, on_delete = models.CASCADE)
+
+    class Meta:
+        unique_together = ['person_name', 'person_email', 'event']
+
+class InscriptionManager:
+    @classmethod
+    def create_inscription(cls, form, event):
+        if(event.capacity == 0):
+            raise ValidationError
+        new_inscription = EventInscription(person_name = form.cleaned_data['name'], person_email = form.cleaned_data['email'], event = event)
+        new_inscription.save()
+        event.capacity -= 1
+        event.save()

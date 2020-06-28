@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+  <div class="alert alert-success" role="alert">
+    {{ message }}
+  </div>
+{% elif message.tags == 'error' %}
+  <div class="alert alert-danger" role="alert">
+    {{ message }}
+  </div>
+{% endif %}
+{% endfor %}
+{% endif %}
 
 <div class="container">
 
@@ -25,7 +38,7 @@
           <p class="card-text">
           <h5>Se realizara el dia {{ event.event_date }} en {{ event.place }} con un
               cupo de asistentes de {{ event.capacity }}</p>
-          <a href="#" class="btn btn-success">Anotarse</a>
+          <a href="/events/register?id={{ event.id }}" class="btn btn-success">Anotarse</a>
         </div>
       </div>
       {% endfor %}
@@ -43,5 +56,6 @@
   {% else %}
       <p>No hay eventos disponibles.</p>
   {% endif %}
+
 </div>
 {% endblock %}
