@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from .models import Event
+from .models import Event, EventInscription, InscriptionManager
 from .forms import EventForm
 from django.http import HttpResponse
 
@@ -25,7 +25,9 @@ def register_form(request):
         form = EventForm(request.POST)
         if form.is_valid():
             event_id = int(request.POST.get('event_id'))
-            print("event id is: %s"%event_id)
             event = Event.objects.get(id = event_id)
-            return HttpResponse('OK inscripto en evento %s con id: %s'%(event.title, event.id))
-        return HttpResponse('No se pude inscribir')
+            try:
+                InscriptionManager.create_inscription(form, event)
+                return HttpResponse('OK inscripto en evento %s con id: %s'%(event.title, event.id))
+            except:
+                return HttpResponse('No se pudo inscribir')
