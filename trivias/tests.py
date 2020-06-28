@@ -3,7 +3,7 @@ from django.test import TestCase
 # Create your tests here.
 from .models import Trivia, Choice
 
-class EventModel(TestCase):
+class TriviasModel(TestCase):
     def test_trivia(self):
         trivia = Trivia(title = 'First trivia')
         self.assertEqual(str(trivia), 'First trivia')
