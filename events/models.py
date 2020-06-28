@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -23,6 +24,8 @@ class EventInscription(models.Model):
 class InscriptionManager:
     @classmethod
     def create_inscription(cls, form, event):
+        if(event.capacity == 0):
+            raise ValidationError
         new_inscription = EventInscription(person_name = form.cleaned_data['name'], person_email = form.cleaned_data['email'], event = event)
         new_inscription.save()
         event.capacity -= 1

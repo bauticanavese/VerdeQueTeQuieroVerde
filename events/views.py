@@ -3,6 +3,8 @@ from django.core.paginator import Paginator
 from .models import Event, EventInscription, InscriptionManager
 from .forms import EventForm
 from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.contrib import messages
 
 def index(request):
     try:
@@ -28,6 +30,8 @@ def register_form(request):
             event = Event.objects.get(id = event_id)
             try:
                 InscriptionManager.create_inscription(form, event)
-                return HttpResponse('OK inscripto en evento %s con id: %s'%(event.title, event.id))
+                messages.success(request, 'Ud. se inscribio correctamente')
+                return redirect('/events/')
             except:
-                return HttpResponse('No se pudo inscribir')
+                messages.error(request, 'Ud. no pudo inscribirse')
+                return redirect('/events/')
