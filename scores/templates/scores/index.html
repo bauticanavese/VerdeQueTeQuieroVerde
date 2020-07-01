@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  {% if not ranking %}
+    <p>No hay información para el ranking.</p>
+  {% else %}
+    <div class="container" style="background: beige">
+    <h5> Ranking: Top 10 </h5>
+      <div class="row" id="scores-container">
+        <div class="col">
+            <p class="text-center"> Nombre </p>
+        </div>
+        <div class="col">
+            <p class="text-center"> DNI </p>
+        </div>
+        <div class="col">
+            <p class="text-center"> Puntaje </p>
+        </div>
+       </div>
+    {% for score in ranking %}
+      <div class="row" id="scores-container">
+        <div class="col">
+          <p> {{ score.participant }} </p>
+        </div>
+        <div class="col">
+          <p class="text-center"> {{ score.dni }} </p>
+        </div>
+        <div class="col">
+          <p class="text-center"> {{ score.score }} </p>
+        </div>
+       </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+{% endblock %}
