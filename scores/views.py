@@ -45,12 +45,13 @@ def score(request):
             selected_choices = {int(v) for (k, v) in request.POST.items() if k.isnumeric()}
             total_score = calculate_score(selected_choices)
             score = create_score(participant, dni, total_score)
+            corrects = int(score.score / SCORE_PER_QUESTION)
         except Exception as e:
             query_string = urlencode({'error_message': e.args[0]})
             url = '/trivias?{}'.format(query_string)
             return redirect(url)
 
-        context = {'participant': score.participant, 'dni': score.dni, 'score': score.score, 'date': score.play_date}
+        context = {'participant': score.participant, 'dni': score.dni, 'score': score.score, 'date': score.play_date, 'corrects': corrects}
 
         return render(request, 'scores/score.html', context=context)
     else:
