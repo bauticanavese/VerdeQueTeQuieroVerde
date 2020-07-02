@@ -1,5 +1,8 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Prize
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the prizes index. Placeholder")
+    prizes = Prize.objects.order_by('-points_required')
+    context = { 'prizes' : prizes }
+    return render(request, 'prizes/index.html', context = context)

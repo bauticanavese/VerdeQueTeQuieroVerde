@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  {% if not prizes %}
+    <p>No hay premios disponibles</p>
+  {% else %}
+    <div class="container" style="background: beige">
+      <div class="row col-md-12">
+        <h3 class="text-success">Lista de premios disponibles</h3>
+      </div>
+    <div>
+    {% for prize in prizes %}
+        <div class="row" id="workgroup-container">
+          <div class="col-12">
+            <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px; background:lightcyan;">
+              <div class="row">
+                <div class="col-md-9 col-md-12">
+                  <div class="row pr-3">
+                    <div class="col-8">
+                      <label class="text-left" style="font-size:21px;">Premio: {{prize.prize_title}}</label>
+                    </div>
+                    <div class="col-4 text-left">
+                      <h5>Puntos requeridos: {{prize.points_required}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <br><br>
+    </div>
+    <div class="container" style="background: beige">
+      <div class="row col-md-12">
+        <h3 class="text-success">Como canjear tus puntos</h3>
+      </div>
+      <div class="row col-md-12">
+        <h5> Para canjear tus puntos acercate a la oficina de &nbsp</h5>
+        <h5 class = "text-success"> Verde que te quiero verde </h5>
+        <h5>&nbsp en el 3er piso</h5>
+      </div>
+    </div>
+    {% endif %}
+
+{% endblock %}
