@@ -11,6 +11,10 @@ SCORE_PER_QUESTION = 13
 
 def index(request):
     ranking = Score.objects.order_by('-score')[:10]
+    i = 1
+    for rank in ranking:
+        rank.position = i
+        i += 1
     context = {'ranking': ranking}
     return render(request, 'scores/index.html', context=context)
 
